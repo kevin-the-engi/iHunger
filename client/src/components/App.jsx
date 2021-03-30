@@ -50,7 +50,7 @@ class App extends React.Component {
         </div>
 
         <div className="right">
-          {chosen ? <ListRecipe recipe={recipe} /> : null}
+          {chosen ? <ListRecipe meal={meal} recipe={recipe} /> : null}
         </div>
       </div>
     )

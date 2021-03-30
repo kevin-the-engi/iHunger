@@ -17,6 +17,9 @@ app.get('/random', (req, res) => {
       let i = 1;
       let item = meal.data.meals[0];
       let instructions = item.strInstructions.split('\r\n').filter(item => item !== '');
+      let ytID = item.strYoutube.split('=')[1];
+
+      console.log(ytID);
 
       while(item[`strIngredient${i}`] !== '') {
         const ingredient = item[`strIngredient${i}`];
@@ -32,6 +35,7 @@ app.get('/random', (req, res) => {
 
       meal.data.meals[0].ingredients = ingredients;
       meal.data.meals[0].strInstructions = instructions;
+      meal.data.meals[0].ytID = ytID;
 
       res.status(200).send(meal.data.meals);
     })

@@ -1,12 +1,15 @@
 import React from 'react';
 import Recipe from './Recipe.jsx';
+import Youtube from './Youtube.jsx';
 
-const ListRecipe = ({recipe}) => {
+const ListRecipe = ({meal, recipe}) => {
   return(
-    <div>
+    <div className="recipe">
       {recipe.map((line, i) =>
         <Recipe key={i} line={line} />
       )}
+
+      <Youtube ytID={meal[0].ytID} />
     </div>
   )
 }
