@@ -1,8 +1,10 @@
 import React from 'react';
 
 const Recipe = (props) => {
+  const {line} = props;
+  // console.log(meal)
   return(
-    <div></div>
+    <p>{line}</p>
   )
 };
 
