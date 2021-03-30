@@ -1,22 +1,17 @@
 import React from 'react';
-import Random from './Random.jsx';
 
-class App extends React.Component {
+class Random extends React.Component{
   constructor(props) {
     super(props);
-
-    this.state = {
-
-    }
   }
 
   render() {
     return(
       <div>
-        <Random />
+        <button>Feed Me!</button>
       </div>
     )
   }
 };
 
-export default App;
+export default Random;
