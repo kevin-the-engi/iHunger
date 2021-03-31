@@ -5,11 +5,14 @@ import Youtube from './Youtube.jsx';
 const ListRecipe = ({meal, recipe}) => {
   return(
     <div className="recipe">
-      {recipe.map((line, i) =>
-        <Recipe key={i} line={line} />
-      )}
-
-      <Youtube ytID={meal[0].ytID} />
+      <div className="instructions">
+        {recipe.map((line, i) =>
+          <Recipe key={i} line={line} />
+        )}
+      </div>
+      <div className="video-container">
+        <Youtube ytID={meal[0].ytID} />
+      </div>
     </div>
   )
 }

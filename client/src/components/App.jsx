@@ -3,6 +3,7 @@ import axios from 'axios';
 import Random from './Random.jsx';
 import List from './List.jsx';
 import ListRecipe from './ListRecipe.jsx';
+import styles from '../../dist/styles.css';
 
 class App extends React.Component {
   constructor(props) {
@@ -12,11 +13,17 @@ class App extends React.Component {
       meal: [],
       ingredients: [],
       recipe: [],
+      favorites: [],
       chosen: false
     }
 
     this.getMeal = this.getMeal.bind(this);
     this.chosen = this.chosen.bind(this);
+    this.addFavorite = this.addFavorite.bind(this);
+  }
+
+  componentDidMount() {
+
   }
 
   getMeal() {
@@ -30,9 +37,22 @@ class App extends React.Component {
       })
   }
 
+  postFavorites() {
+    axios.post('favorite', this.state.favorites)
+      .catch(err => {
+        console.log(err);
+      })
+  }
+
   chosen() {
     this.setState({
       chosen: true
+    })
+  }
+
+  addFavorite() {
+    this.setState({
+      favorites: [...this.state.favorite, meal]
     })
   }
 
@@ -40,13 +60,13 @@ class App extends React.Component {
     const {meal, ingredients, recipe, chosen} = this.state;
 
     return(
-      <div>
+      <div className="mainContainer">
         <div className="left">
-          {chosen ? <List meal={meal} ingredients={ingredients}/> : null}
+          <Random meal={meal} getMeal={this.getMeal} chosen={this.chosen} addFavorite={this.addFavorite} />
         </div>
 
-        <div className="middle">
-          <Random meal={meal} getMeal={this.getMeal} chosen={this.chosen} />
+        <div className="center">
+          {chosen ? <List meal={meal} ingredients={ingredients} /> : null}
         </div>
 
         <div className="right">

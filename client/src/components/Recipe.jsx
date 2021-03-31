@@ -1,10 +1,8 @@
 import React from 'react';
 
-const Recipe = (props) => {
-  const {line} = props;
-  // console.log(meal)
+const Recipe = ({line}) => {
   return(
-    <p>{line}</p>
+    <div className="line">{line}</div>
   )
 };
 

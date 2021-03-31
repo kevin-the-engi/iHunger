@@ -19,8 +19,6 @@ app.get('/random', (req, res) => {
       let instructions = item.strInstructions.split('\r\n').filter(item => item !== '');
       let ytID = item.strYoutube.split('=')[1];
 
-      console.log(ytID);
-
       while(item[`strIngredient${i}`] !== '') {
         const ingredient = item[`strIngredient${i}`];
         const measure = item[`strMeasure${i}`];
@@ -42,6 +40,10 @@ app.get('/random', (req, res) => {
     .catch(err => {
       res.status(500).send('https://http.cat/500');
     })
+})
+
+app.post('/favorite', (req, res) => {
+  res.send('posted');
 })
 
 app.listen(port, () => {

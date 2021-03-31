@@ -6,9 +6,6 @@ const List = (props) => {
 
   return(
     <table>
-      <thead>
-        <tr><td>List of Ingredients</td></tr>
-      </thead>
       <tbody>
         {ingredients.map((ingredient, i) =>
           <ListIngredient

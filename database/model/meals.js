@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const db = require('../');
 
-const grocerySchema = mongoose.Schema({
+const mealsSchema = mongoose.Schema({
   mealName: {
     type: String,
     required: true
@@ -9,6 +9,6 @@ const grocerySchema = mongoose.Schema({
   items: []
 })
 
-const Meal = mongoose.model('Meal', grocerySchema);
+const Meal = mongoose.model('Meal', mealsSchema);
 
 module.exports = Meal;
