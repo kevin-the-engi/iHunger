@@ -5,7 +5,6 @@ import List from './List.jsx';
 import ListRecipe from './ListRecipe.jsx';
 import ListFavorites from './ListFavorites.jsx';
 import styles from '../../dist/styles.css';
-// import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends React.Component {
   constructor(props) {

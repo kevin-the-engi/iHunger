@@ -14,19 +14,16 @@ class Favorites extends React.Component {
   }
 
   handleClick(event) {
-    // this.setState({
-    //   display: true
-    // })
     event.preventDefault();
     this.props.showFavorites();
   }
 
   render() {
     const {display} = this.state;
+
     return (
       <div>
         <button className="favorites-btn" onClick={this.handleClick}>Favorites</button>
-        {/* {display ? <Modal /> : null} */}
       </div>
     );
   }
