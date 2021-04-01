@@ -1,7 +1,8 @@
 import React from 'react';
 import Image from './Image.jsx';
 import Add from './Add.jsx';
-import Modal from './Modal.jsx';
+import Favorites from './Favorites.jsx';
+// import Modal from './Modal.jsx';
 
 class Random extends React.Component{
   constructor(props) {
@@ -35,15 +36,19 @@ class Random extends React.Component{
   }
 
   render() {
-    // console.log(this.props.meal)
     const {clicked, expand} = this.state;
-    const {meal, addFavorite, favorites} = this.props;
+    const {meal, addFavorite, favorites, showFavorites} = this.props;
 
     return(
       <div className="container">
         <div className="header">
-          <button className="feed-btn" onClick={this.randomClick}>Feed Me!</button>
-          {clicked ? <button onClick={this.chosenClick}>{expand ? "Collapse" : "Give me recipe!"}</button> : null}
+          <div className="title">
+            <h2>iHunger</h2>
+          </div>
+          <div className="header-btns">
+            <button className="feed-btn" onClick={this.randomClick}>Feed Me!</button>
+            {clicked ? <button onClick={this.chosenClick}>{expand ? "Collapse" : "Give me recipe!"}</button> : null}
+          </div>
         </div>
         <div className="body">
           {clicked ? meal.map(item =>
@@ -51,11 +56,11 @@ class Random extends React.Component{
         </div>
         {clicked ?
           <div className="footer">
+            <div className="favorites">
+              <Favorites showFavorites={showFavorites} />
+            </div>
             <div className="add">
               <Add addFavorite={addFavorite} />
-            </div>
-            <div className="favorites">
-              <Modal favorites={favorites} />
             </div>
           </div>
         : null}

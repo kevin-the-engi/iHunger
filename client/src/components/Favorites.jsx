@@ -13,10 +13,12 @@ class Favorites extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick() {
-    this.setState({
-      display: true
-    })
+  handleClick(event) {
+    // this.setState({
+    //   display: true
+    // })
+    event.preventDefault();
+    this.props.showFavorites();
   }
 
   render() {
@@ -24,7 +26,7 @@ class Favorites extends React.Component {
     return (
       <div className="favorites-btn">
         <button onClick={this.handleClick}>Favorites</button>
-        {display ? <Modal /> : null}
+        {/* {display ? <Modal /> : null} */}
       </div>
     );
   }

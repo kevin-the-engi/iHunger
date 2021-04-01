@@ -3,28 +3,32 @@ import Modal from 'react-bootstrap/Modal';
 import ModalBody from "react-bootstrap/ModalBody";
 import ModalHeader from "react-bootstrap/ModalHeader";
 import ModalTitle from "react-bootstrap/ModalTitle";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 class FavoritesModal extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      isOpen: false
+      isOpen: false,
+      item: '',
+      selectedData: {}
     }
 
     this.showModal = this.showModal.bind(this);
     this.hideModal = this.hideModal.bind(this);
   }
 
-  showModal() {
+  showModal(item) {
     this.setState({
       isOpen: true
     })
   };
 
-  hideModal() {
+  hideModal(item) {
     this.setState({
-      isOpen: false
+      isOpen: false,
     })
   };
 
@@ -39,7 +43,7 @@ class FavoritesModal extends React.Component {
           <ModalHeader>
             <ModalTitle>Favorites</ModalTitle>
           </ModalHeader>
-          <ModalBody>asdfasdf</ModalBody>
+          <ModalBody>{this.state.selected}</ModalBody>
         </Modal>
       </>
     );
