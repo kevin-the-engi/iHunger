@@ -2,6 +2,7 @@ const path = require('path');
 const express = require('express');
 const axios = require('axios');
 const db = require('../database');
+const controller = require('../database/controller');
 
 const app = express();
 const port = 3000;
@@ -38,12 +39,48 @@ app.get('/random', (req, res) => {
       res.status(200).send(meal.data.meals);
     })
     .catch(err => {
-      res.status(500).send('https://http.cat/500');
+      res.sendStatus(500);
     })
 })
 
+app.get('/favorite', (req, res) => {
+  controller.readMeals((err, favorites) => {
+    if (err) {
+      res.sendStatus(404);
+    } else {
+      res.status(200).send(favorites);
+    }
+  })
+})
+
 app.post('/favorite', (req, res) => {
-  res.send('posted');
+  controller.createMeal(req.body, err => {
+    if (err) {
+      res.sendStatus(400);
+    } else {
+      res.sendStatus(201);
+    }
+  })
+})
+
+app.delete('/favorite', (req, res) => {
+  controller.deleteMeal(req.body, err => {
+    if (err) {
+      res.sendStatus(400);
+    } else {
+      res.sendStatus(201);
+    }
+  })
+});
+
+app.delete('/removeAll', (req, res) => {
+  controller.deleteAll(err => {
+    if (err) {
+      res.sendStatus(500);
+    } else {
+      res.sendStatus(201);
+    }
+  })
 })
 
 app.listen(port, () => {

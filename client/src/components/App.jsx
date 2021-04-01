@@ -4,6 +4,7 @@ import Random from './Random.jsx';
 import List from './List.jsx';
 import ListRecipe from './ListRecipe.jsx';
 import styles from '../../dist/styles.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends React.Component {
   constructor(props) {
@@ -19,11 +20,12 @@ class App extends React.Component {
 
     this.getMeal = this.getMeal.bind(this);
     this.chosen = this.chosen.bind(this);
+    this.getFavorites = this.getFavorites.bind(this);
     this.addFavorite = this.addFavorite.bind(this);
   }
 
   componentDidMount() {
-
+    this.getFavorites();
   }
 
   getMeal() {
@@ -37,8 +39,25 @@ class App extends React.Component {
       })
   }
 
-  postFavorites() {
-    axios.post('favorite', this.state.favorites)
+  getFavorites() {
+    axios.get('/favorite')
+      .then(favorites => {
+        this.setState({
+          favorites: favorites.data
+        })
+      })
+  }
+
+  addFavorite() {
+    let meal = {
+      mealName: this.state.meal[0].strMeal,
+      items: this.state.meal[0]
+    }
+
+    axios.post('/favorite', meal)
+      .then(() => {
+        this.getFavorites();
+      })
       .catch(err => {
         console.log(err);
       })
@@ -46,30 +65,24 @@ class App extends React.Component {
 
   chosen() {
     this.setState({
-      chosen: true
-    })
-  }
-
-  addFavorite() {
-    this.setState({
-      favorites: [...this.state.favorite, meal]
+      chosen: !this.state.chosen
     })
   }
 
   render() {
-    const {meal, ingredients, recipe, chosen} = this.state;
+    const {meal, ingredients, recipe, favorites, chosen} = this.state;
 
     return(
       <div className="mainContainer">
         <div className="left">
-          <Random meal={meal} getMeal={this.getMeal} chosen={this.chosen} addFavorite={this.addFavorite} />
+          <Random meal={meal} getMeal={this.getMeal} chosen={this.chosen} addFavorite={this.addFavorite} favorites={favorites} />
         </div>
 
-        <div className="center">
+        <div className={chosen ? "center" : "hide"}>
           {chosen ? <List meal={meal} ingredients={ingredients} /> : null}
         </div>
 
-        <div className="right">
+        <div className={chosen ? "right" : "hide"}>
           {chosen ? <ListRecipe meal={meal} recipe={recipe} /> : null}
         </div>
       </div>
