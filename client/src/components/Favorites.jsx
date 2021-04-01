@@ -1,6 +1,5 @@
 import React from 'react';
 import Modal from './Modal.jsx';
-// import FavoritesModal from './FavoritesModal.jsx';
 
 class Favorites extends React.Component {
   constructor(props) {

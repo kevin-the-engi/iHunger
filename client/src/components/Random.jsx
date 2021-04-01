@@ -46,13 +46,13 @@ class Random extends React.Component{
             <h2>iHunger</h2>
           </div>
           <div className="header-btns">
-            <button className="feed-btn" onClick={this.randomClick}>Feed Me!</button>
-            {clicked ? <button className="recipe-btn" onClick={this.chosenClick}>{expand ? "Collapse" : "Give me recipe!"}</button> : null}
+            <button className="feed-btn" onClick={this.randomClick}>FEED ME!</button>
+            {clicked ? <button className="recipe-btn" onClick={this.chosenClick}>{expand ? "COLLAPSE" : "RECIPE NOW!"}</button> : null}
           </div>
         </div>
         <div className="body">
           {clicked ? meal.map(item =>
-            <Image key={item.idMeal} item={item} />) : <img src="./hungry.gif" alt="hungry" width="370" height="296"></img>}
+            <Image key={item.idMeal} item={item} />) : <img className="hungry" src="./hungry.gif" alt="hungry" width="370" height="296"></img>}
         </div>
         {clicked ?
           <div className="footer">

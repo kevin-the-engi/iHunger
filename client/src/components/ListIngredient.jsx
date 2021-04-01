@@ -1,10 +1,10 @@
 import React from 'react';
 
-const ListIngredient = ({ingredient}) => {
+const ListIngredient = ({ingredient, index}) => {
   return(
     <tr>
-      <td>{ingredient.ingredient}</td>
-      <td>{ingredient.measure}</td>
+      <td className="ingredient">{index}. {ingredient.ingredient}</td>
+      <td className="measure">{ingredient.measure}</td>
     </tr>
   );
 };

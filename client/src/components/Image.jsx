@@ -8,7 +8,7 @@ const Image = (props) => {
       <div className="food-img">
         <img src={item.strMealThumb} alt="food" width="370" height="296"></img>
       </div>
-      <h5 className="meal-name">{item.strMeal}</h5>
+      <h4 className="meal-name">{item.strMeal}</h4>
       <table className="meal-type">
         <tbody>
           <tr>

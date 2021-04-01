@@ -5,12 +5,13 @@ const List = (props) => {
   const {meal, ingredients} = props;
 
   return(
-    <table className="test1">
+    <table className="ingredients">
       <tbody>
         {ingredients.map((ingredient, i) =>
           <ListIngredient
             key={i}
             ingredient={ingredient}
+            index={i + 1}
           />
         )}
       </tbody>
