@@ -25,6 +25,7 @@ class App extends React.Component {
     this.getFavorites = this.getFavorites.bind(this);
     this.addFavorite = this.addFavorite.bind(this);
     this.showFavorites = this.showFavorites.bind(this);
+    this.deleteFavorite = this.deleteFavorite.bind(this);
     this.switchTo = this.switchTo.bind(this);
   }
 
@@ -67,6 +68,20 @@ class App extends React.Component {
       })
   }
 
+  deleteFavorite(mealID) {
+    let meal = {
+      '_id': mealID
+    }
+
+    axios.delete('/favorite', { data: meal })
+      .then(() => {
+        this.getFavorites();
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  }
+
   chosen() {
     this.setState({
       chosen: !this.state.chosen
@@ -90,11 +105,12 @@ class App extends React.Component {
 
     return(
       <div className="mainContainer">
-        <div className="side">
+        <div className={displayFavorites ? "side" : "hide"}>
           {displayFavorites ?
-            <ListFavorites favorites={favorites} switchTo={this.switchTo} /> : null
+            <ListFavorites favorites={favorites} switchTo={this.switchTo} remove={this.deleteFavorite} /> : null
           }
         </div>
+
         <div className="left">
           <Random meal={meal} getMeal={this.getMeal} chosen={this.chosen} addFavorite={this.addFavorite} favorites={favorites} showFavorites={this.showFavorites}/>
         </div>

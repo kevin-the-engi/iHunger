@@ -47,7 +47,7 @@ class Random extends React.Component{
           </div>
           <div className="header-btns">
             <button className="feed-btn" onClick={this.randomClick}>Feed Me!</button>
-            {clicked ? <button onClick={this.chosenClick}>{expand ? "Collapse" : "Give me recipe!"}</button> : null}
+            {clicked ? <button className="recipe-btn" onClick={this.chosenClick}>{expand ? "Collapse" : "Give me recipe!"}</button> : null}
           </div>
         </div>
         <div className="body">

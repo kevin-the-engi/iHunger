@@ -23,9 +23,7 @@ const readMeals = (callback) => {
 }
 
 const deleteMeal = (meal, callback) => {
-  let mealID = meal._id;
-
-  Meal.find({'_id': mealID}, err => {
+  Meal.deleteOne(meal, err => {
     if (err) {
       callback(err, null);
     } else {

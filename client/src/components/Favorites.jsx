@@ -24,8 +24,8 @@ class Favorites extends React.Component {
   render() {
     const {display} = this.state;
     return (
-      <div className="favorites-btn">
-        <button onClick={this.handleClick}>Favorites</button>
+      <div>
+        <button className="favorites-btn" onClick={this.handleClick}>Favorites</button>
         {/* {display ? <Modal /> : null} */}
       </div>
     );

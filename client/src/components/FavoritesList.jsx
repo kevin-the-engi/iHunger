@@ -1,14 +1,23 @@
 import React from 'react';
+import Remove from './Remove.jsx';
 
-const FavoritesList = ({favorite, switchTo}) => {
+const FavoritesList = ({favorite, switchTo, remove}) => {
   const handleClick = (event) => {
     event.preventDefault();
-
     switchTo(favorite.items)
   }
 
+  const handleRemove = (event) => {
+    remove(favorite._id);
+  }
+
   return (
-    <div onClick={handleClick}>{favorite.mealName}</div>
+    <tr>
+      <td onClick={handleClick}>
+        {favorite.mealName}
+      </td>
+      <Remove handleRemove={handleRemove} />
+    </tr>
   )
 }
 
