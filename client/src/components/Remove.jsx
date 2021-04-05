@@ -7,8 +7,8 @@ const Remove = ({handleRemove}) => {
   }
 
   return(
-    <td>
-      <button className="remove-btn" onClick={handleClick}>X</button>
+    <td className="remove-btn">
+      <button className="remove-btn fas fa-times-circle" onClick={handleClick}>✖</button>
     </td>
   )
 }

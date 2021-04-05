@@ -13,7 +13,7 @@ const FavoritesList = ({favorite, switchTo, remove}) => {
 
   return (
     <tr className="favorite">
-      <td onClick={handleClick}>
+      <td className="favorite-name" onClick={handleClick}>
         {favorite.mealName}
       </td>
       <Remove handleRemove={handleRemove} />

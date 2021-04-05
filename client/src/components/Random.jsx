@@ -2,7 +2,6 @@ import React from 'react';
 import Image from './Image.jsx';
 import Add from './Add.jsx';
 import Favorites from './Favorites.jsx';
-// import Modal from './Modal.jsx';
 
 class Random extends React.Component{
   constructor(props) {

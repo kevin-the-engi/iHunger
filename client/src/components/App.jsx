@@ -94,8 +94,11 @@ class App extends React.Component {
   }
 
   switchTo(favorite) {
+    console.log(favorite)
     this.setState({
-      meal: favorite
+      meal: favorite,
+      ingredients: favorite[0].ingredients,
+      recipe: favorite[0].strInstructions
     })
   }
 
@@ -105,6 +108,7 @@ class App extends React.Component {
     return(
       <div className="mainContainer">
         <div className={displayFavorites ? "side" : "hide"}>
+          <h4 className="title">Favorites</h4>
           {displayFavorites ?
             <ListFavorites favorites={favorites} switchTo={this.switchTo} remove={this.deleteFavorite} /> : null
           }
@@ -115,10 +119,12 @@ class App extends React.Component {
         </div>
 
         <div className={chosen ? "center" : "hide"}>
+          <h4 className="title">Ingredients</h4>
           {chosen ? <List meal={meal} ingredients={ingredients} /> : null}
         </div>
 
         <div className={chosen ? "right" : "hide"}>
+          <h4 className="title">Recipe</h4>
           {chosen ? <ListRecipe meal={meal} recipe={recipe} /> : null}
         </div>
       </div>

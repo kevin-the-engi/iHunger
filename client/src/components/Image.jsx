@@ -5,19 +5,19 @@ const Image = (props) => {
 
   return(
     <div className="food">
-      <div className="food-img">
-        <img src={item.strMealThumb} alt="food" width="370" height="296"></img>
+      <div>
+        <img className="food-img" src={item.strMealThumb} alt="food" width="370" height="296"></img>
       </div>
       <h4 className="meal-name">{item.strMeal}</h4>
       <table className="meal-type">
         <tbody>
           <tr>
-            <th>Cuisine</th>
-            <th>Category</th>
+            <th className="cuisine">Cuisine</th>
+            <th className="category"> Category</th>
           </tr>
           <tr>
-            <td>{item.strArea}</td>
-            <td>{item.strCategory}</td>
+            <td className="cuisine">{item.strArea}</td>
+            <td className="category">{item.strCategory}</td>
           </tr>
         </tbody>
       </table>
