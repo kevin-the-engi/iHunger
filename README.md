@@ -19,6 +19,6 @@ A random meal generator app that was meant to be a small app project done within
 * Front-end:
   * React.js, HTML/CSS, CSS Flexbox
 * Back-end:
-  * Express.js, Node.js
+  * Express.js, Node.js, MongoDB/Mongoose
 * Tools:
   * TheMealDB API
